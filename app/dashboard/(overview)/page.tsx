@@ -1,32 +1,22 @@
-import CardWrapper from '@/app/ui/dashboard/cards';
 //import { Card } from '@/app/ui/dashboard/cards';
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import CardWrapper from '@/app/ui/dashboard/cards';
 import { lusitana } from '@/app/ui/fonts';
-//import { fetchCardData } from '@/app/lib/data';
+
+
+import { /*fetchRevenue, fetchLatestInvoices, fetchCardData*/} from '@/app/lib/data';
 import { Suspense } from 'react';
 import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardsSkeleton} from '@/app/ui/skeletons';
-//import { LatestInvoicesSkeleton } from '@/app/ui/skeletons';
 
-//removed//import { fetchRevenue, fetchLatestInvoices, fetchCardData} from '@/app/lib/data';
-//import { fetchLatestInvoices } from '@/app/lib/data';
+
+
  
 export default async function Page() {
-    //removed//const revenue=await fetchRevenue();
-    //const latestInvoices=await fetchLatestInvoices();
+  //const revenue = await fetchRevenue();
+  //const latestInvoices = await fetchLatestInvoices();
+  //const {numberOfCustomers, numberOfInvoices, totalPaidInvoices, totalPendingInvoices}=await fetchCardData();
     
-    /*const cardData= await fetchCardData();
-    const totalPaidInvoices=cardData.totalPaidInvoices;
-    const totalPendingInvoices=cardData.totalPendingInvoices;
-    const numberOfInvoices=cardData.numberOfInvoices;
-    const numberOfCustomers=cardData.numberOfCustomers;*/
-
-    //const {totalPaidInvoices, numberOfCustomers, numberOfInvoices, totalPendingInvoices} = await fetchCardData();
-
-
-
-
-
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
@@ -38,14 +28,12 @@ export default async function Page() {
         </Suspense>
       </div>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
-              <Suspense fallback={<RevenueChartSkeleton />}>
+        <Suspense fallback={<RevenueChartSkeleton />}>
           <RevenueChart />
         </Suspense>
-
-<Suspense fallback={<LatestInvoicesSkeleton/>}>
-<LatestInvoices />
-</Suspense>
-
+        <Suspense fallback={<LatestInvoicesSkeleton />}>
+          <LatestInvoices />
+        </Suspense>
         
       </div>
     </main>
